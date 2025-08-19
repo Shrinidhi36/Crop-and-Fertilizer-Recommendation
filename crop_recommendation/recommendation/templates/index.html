@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop and Fertilizer Recommendation</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+</head>
+<body class="index-page">
+    <div class="form-box">
+        <h1>Crop and Fertilizer Recommendation</h1>
+        <form method="POST">
+            {% csrf_token %}
+
+            <label for="N">Nitrogen (N):</label>
+            <select name="N" required>
+                {% for i in range_0_200 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <label for="P">Phosphorus (P):</label>
+            <select name="P" required>
+                {% for i in range_0_150 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <label for="K">Potassium (K):</label>
+            <select name="K" required>
+                {% for i in range_0_200 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <label for="temperature">Temperature (°C):</label>
+            <select name="temperature" required>
+                {% for i in range_10_45 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <label for="humidity">Humidity (%):</label>
+            <select name="humidity" required>
+                {% for i in range_20_100 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <label for="ph">pH:</label>
+            <select name="ph" required>
+                {% for i in range_4_9 %}
+                    <option value="{{ i }}">{{ i }}.0</option>
+                {% endfor %}
+            </select><br><br>
+
+            <label for="rainfall">Rainfall (mm):</label>
+            <select name="rainfall" required>
+                {% for i in range_50_300 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <label for="soil_type">Soil Type:</label>
+            <select name="soil_type" required>
+                <option value="0">Clay</option>
+                <option value="1">Loamy</option>
+                <option value="2">Sandy</option>
+            </select><br><br>
+
+            <label for="algorithm">Choose Algorithm:</label>
+            <select name="algorithm" required>
+                <option value="naive_bayes">Naive Bayes</option>
+                <option value="logistic_regression">Logistic Regression</option>
+            </select><br><br>
+
+            <button type="submit">Get Recommendation</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendation Result</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+</head>
+<body class="result-page">
+    <div class="result-box">
+        <h2>Top Recommended Crops and Fertilizers</h2>
+        <ul>
+            {% for item in recommendations %}
+                <li>
+                    <strong>{{ item.crop|title }}</strong>: {{ item.fertilizer }}
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'home' %}">Back</a>
+    </div>
+</body>
+</html>
